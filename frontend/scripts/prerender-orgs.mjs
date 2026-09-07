@@ -13,7 +13,7 @@
  * and takes over seamlessly.
  */
 
-import { mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -132,3 +132,10 @@ mkdirSync(orgsDir, { recursive: true });
 writeFileSync(join(orgsDir, 'index.html'), html, 'utf-8');
 
 console.log(`✓ Prerendered /orgs → dist/orgs/index.html  (${allOrgs.length} orgs, ${newOrgs.length} new)`);
+
+// ── SPA fallback ──────────────────────────────────────────────────────────────
+// Render (and most static hosts) serve 404.html for paths with no matching
+// file. Emitting a copy of the app shell there lets the React app boot on any
+// unknown deep link (e.g. /user/octocat) instead of showing a bare 404 page.
+copyFileSync(join(distDir, 'index.html'), join(distDir, '404.html'));
+console.log('✓ SPA fallback → dist/404.html (served for unknown paths)');
