@@ -8,9 +8,8 @@
  * By baking all 185 org names, descriptions, and ideas-list links into real HTML,
  * Googlebot sees full content instantly on the first crawl — no JS required.
  *
- * RESULT: When users visit gsoc.app/orgs, CloudFront serves this static file (if
- * the CloudFront Function URI rewrite is configured). The React app then hydrates
- * and takes over seamlessly.
+ * RESULT: When users visit /orgs, the host serves this static file directly. The
+ * React app then hydrates and takes over seamlessly.
  */
 
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
@@ -42,7 +41,7 @@ const itemListSchema = {
     '@type': 'ItemList',
     name: 'GSoC 2026 Participating Organizations',
     description: `All ${allOrgs.length} organizations participating in Google Summer of Code 2026, including ${newOrgs.length} new organizations.`,
-    url: 'https://gsoc.app/orgs',
+    url: 'https://gsoc-espionage.onrender.com/orgs',
     numberOfItems: allOrgs.length,
     itemListElement: allOrgs.map((org, idx) => ({
         '@type': 'ListItem',
@@ -86,30 +85,28 @@ let html = readFileSync(join(distDir, 'index.html'), 'utf-8');
 // 1. Title
 html = html.replace(
     /<title>[^<]*<\/title>/,
-    `<title>GSoC 2026 Organizations — ${allOrgs.length} Orgs | gsoc.app</title>`
+    `<title>GSoC 2026 Organizations — ${allOrgs.length} Orgs | GSoC Espionage</title>`
 );
 
 // 2. Meta description
 html = html.replace(
     /<meta name="description"\s+content="[^"]*"\s*\/>/,
-    `<meta name="description" content="Browse all ${allOrgs.length} organizations participating in Google Summer of Code 2026, including ${newOrgs.length} new ones. Find ideas lists, tech stacks, and contact information on gsoc.app." />`
+    `<meta name="description" content="Browse all ${allOrgs.length} organizations participating in Google Summer of Code 2026, including ${newOrgs.length} new ones. Find ideas lists, tech stacks, and contact information on GSoC Espionage." />`
 );
 
 // 3. Canonical
 html = html.replace(
     /<link rel="canonical" href="[^"]*"\s*\/>/,
-    '<link rel="canonical" href="https://gsoc.app/orgs" />'
+    '<link rel="canonical" href="https://gsoc-espionage.onrender.com/orgs" />'
 );
 
 // 4. OG url + title + description
 html = html
-    .replace(/(<meta property="og:url"\s+content=")[^"]*(")/,    `$1https://gsoc.app/orgs$2`)
-    .replace(/(<meta property="og:title"\s+content=")[^"]*(")/,  `$1GSoC 2026 Organizations — ${allOrgs.length} Orgs | gsoc.app$2`)
+    .replace(/(<meta property="og:url"\s+content=")[^"]*(")/,    `$1https://gsoc-espionage.onrender.com/orgs$2`)
+    .replace(/(<meta property="og:title"\s+content=")[^"]*(")/,  `$1GSoC 2026 Organizations — ${allOrgs.length} Orgs | GSoC Espionage$2`)
     .replace(/(<meta property="og:description"\s+content=")[^"]*(")/,
-        `$1Browse all ${allOrgs.length} GSoC 2026 organizations including ${newOrgs.length} new ones.$2`)
-    .replace(/(<meta name="twitter:url"\s+content=")[^"]*(")/,   `$1https://gsoc.app/orgs$2`)
-    .replace(/(<meta name="twitter:title"\s+content=")[^"]*(")/,
-        `$1GSoC 2026 Organizations — ${allOrgs.length} Orgs | gsoc.app$2`)
+        `$1Browse all ${allOrgs.length} GSoC 2026 organizations including ${newOrgs.length} new ones.$2`)    .replace(/(<meta name="twitter:url"\s+content=")[^"]*(")/,   `$1https://gsoc-espionage.onrender.com/orgs$2`)
+    .replace(/(<meta name="twitter:title"\s+content=")[^"]*(")/,   `$1GSoC 2026 Organizations — ${allOrgs.length} Orgs | GSoC Espionage$2`)
     .replace(/(<meta name="twitter:description"\s+content=")[^"]*(")/,
         `$1Browse all ${allOrgs.length} GSoC 2026 organizations including ${newOrgs.length} new ones.$2`);
 

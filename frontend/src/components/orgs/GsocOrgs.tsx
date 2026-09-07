@@ -125,7 +125,7 @@ export class GsocOrgs extends React.Component<{}, GsocOrgsState> {
             '@type': 'ItemList',
             name: 'GSoC 2026 Participating Organizations',
             description: `All ${allOrgs.length} organizations participating in Google Summer of Code 2026, including ${newOrgs.length} new organizations.`,
-            url: 'https://gsoc.app/orgs',
+            url: 'https://gsoc-espionage.onrender.com/orgs',
             numberOfItems: allOrgs.length,
             itemListElement: allOrgs.map((org, idx) => ({
                 '@type': 'ListItem',
@@ -143,12 +143,12 @@ export class GsocOrgs extends React.Component<{}, GsocOrgsState> {
         return (
             <>
             <Helmet>
-                <title>{`GSoC 2026 Organizations — ${allOrgs.length} Orgs | gsoc.app`}</title>
+                <title>{`GSoC 2026 Organizations — ${allOrgs.length} Orgs | GSoC Espionage`}</title>
                 <meta
                     name="description"
                     content={`Browse all ${allOrgs.length} organizations participating in Google Summer of Code 2026, including ${newOrgs.length} new ones. Find ideas lists, tech stacks, and contact information.`}
                 />
-                <link rel="canonical" href="https://gsoc.app/orgs" />
+                <link rel="canonical" href="https://gsoc-espionage.onrender.com/orgs" />
                 <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
             </Helmet>
             <div className="gsoc-orgs-view">

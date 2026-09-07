@@ -6,7 +6,7 @@
 
   <!-- Homepage / PR Analytics -->
   <url>
-    <loc>https://gsoc.app/</loc>
+    <loc>https://gsoc-espionage.onrender.com/</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- GSoC 2026 Organizations view -->
   <url>
-    <loc>https://gsoc.app/orgs</loc>
+    <loc>https://gsoc-espionage.onrender.com/orgs</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

@@ -840,28 +840,28 @@ function AppWithRouter() {
     return (
         <>
             <Helmet>
-                <title>{isOrgs ? 'GSoC 2026 Organizations — 185 Orgs | gsoc.app' : 'GSoC 2026 PR Analytics & Contributor Insights | gsoc.app'}</title>
+                <title>{isOrgs ? 'GSoC 2026 Organizations — 185 Orgs | GSoC Espionage' : 'GSoC 2026 PR Analytics & Contributor Insights | GSoC Espionage'}</title>
                 <meta
                     name="description"
                     content={isOrgs
-                        ? 'Browse all 185 organizations participating in Google Summer of Code 2026, including 22 new ones. Find ideas lists, tech stacks, and contact information on gsoc.app.'
-                        : 'Analyze GitHub PR activity, contributor stats, merge rates, and code metrics for any repo. Track Google Summer of Code 2026 project contributions on gsoc.app.'}
+                        ? 'Browse all 185 organizations participating in Google Summer of Code 2026, including 22 new ones. Find ideas lists, tech stacks, and contact information on GSoC Espionage.'
+                        : 'Analyze GitHub PR activity, contributor stats, merge rates, and code metrics for any repo. Track Google Summer of Code 2026 project contributions on GSoC Espionage.'}
                 />
-                <link rel="canonical" href={`https://gsoc.app${isOrgs ? '/orgs' : '/'}`} />
+                <link rel="canonical" href={`https://gsoc-espionage.onrender.com${isOrgs ? '/orgs' : '/'}`} />
                 <meta property="og:title" content={isOrgs
-                    ? 'GSoC 2026 Organizations — 185 Orgs | gsoc.app'
-                    : 'GSoC 2026 PR Analytics & Contributor Insights | gsoc.app'}
+                    ? 'GSoC 2026 Organizations — 185 Orgs | GSoC Espionage'
+                    : 'GSoC 2026 PR Analytics & Contributor Insights | GSoC Espionage'}
                 />
-                <meta property="og:url" content={`https://gsoc.app${isOrgs ? '/orgs' : '/'}`} />
+                <meta property="og:url" content={`https://gsoc-espionage.onrender.com${isOrgs ? '/orgs' : '/'}`} />
                 <meta property="og:description" content={isOrgs
                     ? 'Browse all 185 GSoC 2026 organizations including 22 new ones. Find ideas lists, tech stacks, and contact information.'
                     : 'Analyze GitHub PR activity, contributor stats, and code metrics. Track Google Summer of Code 2026 contributions.'}
                 />
                 <meta name="twitter:title" content={isOrgs
-                    ? 'GSoC 2026 Organizations — 185 Orgs | gsoc.app'
-                    : 'GSoC 2026 PR Analytics & Contributor Insights | gsoc.app'}
+                    ? 'GSoC 2026 Organizations — 185 Orgs | GSoC Espionage'
+                    : 'GSoC 2026 PR Analytics & Contributor Insights | GSoC Espionage'}
                 />
-                <meta name="twitter:url" content={`https://gsoc.app${isOrgs ? '/orgs' : '/'}`} />
+                <meta name="twitter:url" content={`https://gsoc-espionage.onrender.com${isOrgs ? '/orgs' : '/'}`} />
                 <meta name="twitter:description" content={isOrgs
                     ? 'Browse all 185 GSoC 2026 organizations including 22 new ones.'
                     : 'Analyze GitHub PR activity and contributor stats for Google Summer of Code 2026 projects.'}

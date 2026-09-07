@@ -2,9 +2,9 @@
 
 > **GSoC 2026 Organizations Directory & GitHub PR Analytics Platform**
 
-**Live at: [gsoc.app](https://gsoc.app)**
+**Live at: [gsoc-espionage.onrender.com](https://gsoc-espionage.onrender.com)**
 
-A comprehensive platform featuring a directory of all **185 organizations** participating in Google Summer of Code 2026 (including **22 new organizations**), plus powerful GitHub repository analytics for tracking pull requests, contributor activity, and code metrics. Built with React and deployed on AWS infrastructure.
+A comprehensive platform featuring a directory of all **185 organizations** participating in Google Summer of Code 2026 (including **22 new organizations**), plus powerful GitHub repository analytics for tracking pull requests, contributor activity, and code metrics. Built with React and deployed on Render.
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -242,10 +242,9 @@ docker compose up --build -d
 ## ☁️ Cloud Deployment
 
 ### Production Environment
-- **Live URL:** [gsoc.app](https://gsoc.app)
-- **Hosting:** AWS S3 (static files)
-- **CDN:** AWS CloudFront with custom functions
-- **CI/CD:** GitHub Actions (auto-deploy on push to main)
+- **Live URL:** [gsoc-espionage.onrender.com](https://gsoc-espionage.onrender.com)
+- **Hosting:** Render (static site, global CDN)
+- **CI/CD:** Auto-deploy on push to main
 
 ### Cache Strategy
 - **Hashed Assets** (JS/CSS): 31,536,000 seconds (1 year cache)

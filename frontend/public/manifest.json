@@ -1,6 +1,6 @@
 {
-  "name": "gsoc.app — GSoC 2026 Organizations & PR Analytics",
-  "short_name": "gsoc.app",
+  "name": "GSoC Espionage — GSoC 2026 Organizations & PR Analytics",
+  "short_name": "GSoC Espionage",
   "description": "Explore all 185 GSoC 2026 participating organizations including 22 new ones. Track GitHub PR activity, contributor stats, and code metrics for Google Summer of Code 2026 projects.",
   "start_url": "/",
   "display": "standalone",

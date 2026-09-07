@@ -1,8 +1,8 @@
-# robots.txt for gsoc.app
-# https://gsoc.app/
+# robots.txt for gsoc-espionage.onrender.com
+# https://gsoc-espionage.onrender.com/
 
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://gsoc.app/sitemap.xml
+Sitemap: https://gsoc-espionage.onrender.com/sitemap.xml
