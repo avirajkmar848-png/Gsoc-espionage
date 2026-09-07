@@ -1,0 +1,8 @@
+# robots.txt for gsoc.app
+# https://gsoc.app/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://gsoc.app/sitemap.xml

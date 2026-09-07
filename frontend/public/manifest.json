@@ -1,0 +1,47 @@
+{
+  "name": "gsoc.app — GSoC 2026 Organizations & PR Analytics",
+  "short_name": "gsoc.app",
+  "description": "Explore all 185 GSoC 2026 participating organizations including 22 new ones. Track GitHub PR activity, contributor stats, and code metrics for Google Summer of Code 2026 projects.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["developer tools", "productivity", "education"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "GSoC 2026 Organizations & PR Analytics Dashboard"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "GSoC 2026 Organizations",
+      "short_name": "Orgs",
+      "description": "Browse all 185 GSoC 2026 participating organizations",
+      "url": "/?view=orgs",
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
