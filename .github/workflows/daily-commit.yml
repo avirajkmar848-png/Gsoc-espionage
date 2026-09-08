@@ -1,0 +1,40 @@
+name: Daily Commit
+
+on:
+  schedule:
+    # Runs daily at 09:00 UTC
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Append activity log entry
+        run: |
+          echo "| $(date -u +'%Y-%m-%d') | Automated daily sync ($(date -u +'%H:%M:%S UTC')) |" >> ACTIVITY_LOG.md
+
+      - name: Bump data sync timestamp
+        run: |
+          TODAY="$(date -u +'%Y-%m-%d')"
+          sed -i "s/export const LAST_DATA_SYNC = \".*\";/export const LAST_DATA_SYNC = \"${TODAY}\";/" frontend/src/constants/index.ts
+
+      - name: Commit and push
+        run: |
+          git config user.name "avirajkmar848-png"
+          git config user.email "292680783+avirajkmar848-png@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: daily sync $(date -u +'%Y-%m-%d')"
+          git push
