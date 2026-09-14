@@ -218,7 +218,7 @@ sequenceDiagram
 
 ```bash
 # Clone the repository
-git clone https://github.com/Ankitsinghsisodya/Gsoc-espionage.git
+git clone https://github.com/avirajkmar848-png/Gsoc-espionage.git
 cd Gsoc-espionage/frontend
 
 # Install dependencies

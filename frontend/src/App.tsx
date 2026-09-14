@@ -335,8 +335,8 @@ class App extends React.Component<AppProps, AppState> {
             } else {
                 throw new Error('Invalid GitHub URL. Enter a username (e.g., octocat) or repository (e.g., facebook/react)');
             }
-        } catch (error: any) {
-            let message = error.message || 'Failed to analyze';
+        } catch (error) {
+            let message = error instanceof Error ? error.message : 'Failed to analyze';
 
             // Improve error messages based on URL type
             const urlInfo = GitHubUrlParser.detectUrlType(repositoryUrl);
@@ -779,7 +779,7 @@ class App extends React.Component<AppProps, AppState> {
                     {/* GitHub Repo - top right */}
                     <a
                         className="github-link-btn"
-                        href="https://github.com/Ankitsinghsisodya/Gsoc-espionage"
+                        href="https://github.com/avirajkmar848-png/Gsoc-espionage"
                         target="_blank"
                         rel="noopener noreferrer"
                         title="Star us on GitHub"

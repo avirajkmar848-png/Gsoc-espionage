@@ -37,6 +37,43 @@ import { DateUtils, GitHubUrlParser } from "../utils";
 import { CACHE_TTL, CacheService } from "./CacheService";
 
 /**
+ * GitHub REST API pull request response shape.
+ * Only the fields the app consumes are typed; the rest is ignored.
+ */
+interface GitHubPullRequestApi {
+  number: number;
+  title: string;
+  state: "open" | "closed";
+  merged_at: string | null;
+  created_at: string;
+  closed_at: string | null;
+  html_url: string;
+  base?: { ref: string };
+  user?: { login: string; avatar_url: string };
+  labels?: Array<{ name: string }>;
+  additions?: number;
+  deletions?: number;
+  changed_files?: number;
+  review_comments?: number;
+}
+
+/**
+ * GitHub search/issues API item response shape.
+ */
+interface GitHubSearchItemApi {
+  number: number;
+  title: string;
+  state: "open" | "closed";
+  pull_request?: { merged_at: string | null };
+  created_at: string;
+  closed_at: string | null;
+  html_url: string;
+  repository_url: string;
+  user?: { login: string; avatar_url: string };
+  labels?: Array<string | { name: string }>;
+}
+
+/**
  * GitHub API Error with additional context.
  * @extends Error
  */
@@ -487,7 +524,7 @@ class GitHubServiceClass {
         allPRs.length < GITHUB_API_CONFIG.MAX_PRS
       ) {
         const baseParam = branch ? `&base=${branch}` : "";
-        const data = await this.request<any[]>(
+        const data = await this.request<GitHubPullRequestApi[]>(
           `/repos/${owner}/${repo}/pulls?state=all&sort=created&direction=desc&per_page=${GITHUB_API_CONFIG.PER_PAGE}&page=${page}${baseParam}`
         );
 
@@ -533,7 +570,7 @@ class GitHubServiceClass {
     const maxPages = 5;
 
     while (page <= maxPages && prs.length < 500) {
-      const searchResult = await this.request<{ items: any[] }>(
+      const searchResult = await this.request<{ items: GitHubSearchItemApi[] }>(
         `/search/issues?q=${encodeURIComponent(
           query
         )}&per_page=100&page=${page}&sort=created&order=desc`
@@ -560,7 +597,11 @@ class GitHubServiceClass {
    * Maps GitHub API pull request response to internal PullRequest type.
    * @private
    */
-  private mapPullRequest(pr: any, owner: string, repo: string): PullRequest {
+  private mapPullRequest(
+    pr: GitHubPullRequestApi,
+    owner: string,
+    repo: string
+  ): PullRequest {
     return {
       number: pr.number,
       title: pr.title,
@@ -577,7 +618,7 @@ class GitHubServiceClass {
         login: pr.user?.login || "unknown",
         avatarUrl: pr.user?.avatar_url || "",
       },
-      labels: pr.labels?.map((l: any) => l.name) || [],
+      labels: pr.labels?.map((l) => l.name) || [],
       additions: pr.additions || 0,
       deletions: pr.deletions || 0,
       changedFiles: pr.changed_files || 0,
@@ -590,7 +631,10 @@ class GitHubServiceClass {
    * Maps search API result to PullRequest type.
    * @private
    */
-  private mapSearchResultToPR(item: any, username: string): PullRequest {
+  private mapSearchResultToPR(
+    item: GitHubSearchItemApi,
+    username: string
+  ): PullRequest {
     const urlParts = item.repository_url?.split("/") || [];
     const owner = urlParts[urlParts.length - 2] || "";
     const repo = urlParts[urlParts.length - 1] || "";
@@ -612,7 +656,7 @@ class GitHubServiceClass {
         avatarUrl: item.user?.avatar_url || "",
       },
       labels:
-        item.labels?.map((l: any) =>
+        item.labels?.map((l) =>
           typeof l === "string" ? l : l.name || ""
         ) || [],
       additions: 0,

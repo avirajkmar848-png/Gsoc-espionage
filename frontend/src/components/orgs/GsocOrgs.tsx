@@ -85,8 +85,8 @@ function handleLogoError(e: React.SyntheticEvent<HTMLImageElement>) {
     if (fallback) fallback.style.display = 'flex';
 }
 
-export class GsocOrgs extends React.Component<{}, GsocOrgsState> {
-    constructor(props: {}) {
+export class GsocOrgs extends React.Component<Record<string, never>, GsocOrgsState> {
+    constructor(props: Record<string, never>) {
         super(props);
         this.state = { activeTab: 'all', searchQuery: '' };
     }

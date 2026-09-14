@@ -92,7 +92,7 @@ export class ContributorModal extends React.Component<ContributorModalProps, Con
         const { allPullRequests, filter, selectedRepo } = this.state;
 
         // First filter by repo
-        let prs = selectedRepo
+        const prs = selectedRepo
             ? allPullRequests.filter(pr => pr.repositoryName === selectedRepo)
             : allPullRequests;
 
