@@ -107,4 +107,4 @@ export const ANIMATION_DURATION = {
  * Date of the most recent automated data sync.
  * Kept fresh by the `daily-commit` GitHub Actions workflow.
  */
-export const LAST_DATA_SYNC = "2026-09-16";
+export const LAST_DATA_SYNC = "2026-09-17";
